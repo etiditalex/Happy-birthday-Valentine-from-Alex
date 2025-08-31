@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Valentine! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            animation: cardFloat 3s ease-in-out infinite;
+            max-width: 500px;
+            margin: 20px;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid #ff6b9d;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+            animation: imageGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes imageGlow {
+            0% { box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4); }
+            100% { box-shadow: 0 15px 40px rgba(255, 107, 157, 0.8); }
+        }
+
+        .birthday-title {
+            font-size: 2.5em;
+            color: #ff6b9d;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes titleBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .birthday-message {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .birthday-wish {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: wishPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes wishPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework 2s ease-out forwards;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(var(--y)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b9d;
+            animation: heartFloat 6s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .balloon {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: balloonFloat 8s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 20px;
+            background: #333;
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0px) rotate(5deg); }
+            50% { transform: translateY(-30px) rotate(-5deg); }
+        }
+
+        .balloon:nth-child(1) { background: #ff6b9d; left: 10%; animation-delay: 0s; }
+        .balloon:nth-child(2) { background: #4ecdc4; left: 20%; animation-delay: 1s; }
+        .balloon:nth-child(3) { background: #45b7d1; left: 30%; animation-delay: 2s; }
+        .balloon:nth-child(4) { background: #96ceb4; left: 70%; animation-delay: 3s; }
+        .balloon:nth-child(5) { background: #feca57; left: 80%; animation-delay: 4s; }
+        .balloon:nth-child(6) { background: #ff9ff3; left: 90%; animation-delay: 5s; }
+
+        .music-note {
+            position: absolute;
+            font-size: 24px;
+            color: #ff6b9d;
+            animation: musicFloat 4s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes musicFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .celebration-text {
+            position: absolute;
+            font-size: 1.5em;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: celebrationFloat 5s ease-in-out infinite;
+            z-index: 8;
+        }
+
+        @keyframes celebrationFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.1); }
+        }
+
+        .celebration-text:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .celebration-text:nth-child(2) { top: 15%; right: 10%; animation-delay: 1s; }
+        .celebration-text:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 2s; }
+        .celebration-text:nth-child(4) { bottom: 25%; right: 20%; animation-delay: 3s; }
+
+        @media (max-width: 768px) {
+            .birthday-card {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .birthday-title {
+                font-size: 2em;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="celebration-text">🎉</div>
+    <div class="celebration-text">🎊</div>
+    <div class="celebration-text">✨</div>
+    <div class="celebration-text">🎈</div>
+
+    <div class="container">
+        <div class="birthday-card">
+            <img src="https://res.cloudinary.com/dyfnobo9r/image/upload/v1756647731/WhatsApp_Image_2025-08-31_at_4.41.14_PM_zerq1k.jpg" alt="Valentine" class="profile-image">
+            <h1 class="birthday-title">Happy Birthday Valentine! 🎂</h1>
+            <p class="birthday-message">Wishing you a day filled with joy, laughter, and all the wonderful things that make you smile! May this year bring you endless happiness and beautiful memories.</p>
+            <div class="birthday-wish">🎉 Have an Amazing Day! 🎉</div>
+        </div>
+    </div>
+
+    <script>
+        // Create fireworks
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = Math.random() * 100 + '%';
+            firework.style.setProperty('--y', Math.random() * 50 + 25 + 'vh');
+            firework.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            document.body.appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 2000);
+        }
+
+        // Create hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Create sparkles
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Create music notes
+        function createMusicNote() {
+            const musicNote = document.createElement('div');
+            musicNote.className = 'music-note';
+            musicNote.innerHTML = ['🎵', '🎶', '🎼'][Math.floor(Math.random() * 3)];
+            musicNote.style.left = Math.random() * 100 + '%';
+            musicNote.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(musicNote);
+
+            setTimeout(() => {
+                musicNote.remove();
+            }, 4000);
+        }
+
+        // Create balloons
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + '%';
+            balloon.style.animationDuration = (Math.random() * 2 + 6) + 's';
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 8000);
+        }
+
+        // Start animations
+        setInterval(createFirework, 300);
+        setInterval(createHeart, 800);
+        setInterval(createSparkle, 200);
+        setInterval(createMusicNote, 1500);
+        setInterval(createBalloon, 4000);
+
+        // Add some initial elements
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createHeart();
+                createSparkle();
+            }, i * 200);
+        }
+
+        // Add click effect
+        document.addEventListener('click', (e) => {
+            const clickEffect = document.createElement('div');
+            clickEffect.style.position = 'absolute';
+            clickEffect.style.left = e.clientX + 'px';
+            clickEffect.style.top = e.clientY + 'px';
+            clickEffect.style.fontSize = '30px';
+            clickEffect.innerHTML = '✨';
+            clickEffect.style.pointerEvents = 'none';
+            clickEffect.style.animation = 'sparkle 1s ease-out forwards';
+            document.body.appendChild(clickEffect);
+
+            setTimeout(() => {
+                clickEffect.remove();
+            }, 1000);
+        });
+
+        // Add keyboard effect
+        document.addEventListener('keydown', () => {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework();
+                }, i * 100);
+            }
+        });
+
+        // Add mouse move effect
+        let mouseMoveTimeout;
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(mouseMoveTimeout);
+            mouseMoveTimeout = setTimeout(() => {
+                if (Math.random() < 0.3) {
+                    const trail = document.createElement('div');
+                    trail.style.position = 'absolute';
+                    trail.style.left = e.clientX + 'px';
+                    trail.style.top = e.clientY + 'px';
+                    trail.style.width = '4px';
+                    trail.style.height = '4px';
+                    trail.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                    trail.style.borderRadius = '50%';
+                    trail.style.pointerEvents = 'none';
+                    trail.style.animation = 'sparkle 2s ease-out forwards';
+                    document.body.appendChild(trail);
+
+                    setTimeout(() => {
+                        trail.remove();
+                    }, 2000);
+                }
+            }, 50);
+        });
+
+        // Add birthday message animation
+        const messages = [
+            "🎂 Happy Birthday! 🎂",
+            "🎉 You're Amazing! 🎉",
+            "✨ Shine Bright! ✨",
+            "🎊 Celebrate You! 🎊",
+            "💖 You're Special! 💖"
+        ];
+
+        let messageIndex = 0;
+        setInterval(() => {
+            const wishElement = document.querySelector('.birthday-wish');
+            wishElement.style.opacity = '0';
+            setTimeout(() => {
+                wishElement.innerHTML = messages[messageIndex];
+                wishElement.style.opacity = '1';
+                messageIndex = (messageIndex + 1) % messages.length;
+            }, 500);
+        }, 3000);
+
+        // Add confetti effect on load
+        window.addEventListener('load', () => {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createFirework();
+                    createHeart();
+                }, i * 100);
+            }
+        });
+    </script>
+</body>
+</html>
